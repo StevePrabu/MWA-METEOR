@@ -1,0 +1,4 @@
+MYBASE="/astro/mwasci/sprabu/satellites/MWA-METEOR"
+MYCLUSTER="garrawarla"
+MYACCOUNT="mwasci"
+MYPATH="/astro/mwasci/sprabu/path/PawseyPathFiles"
