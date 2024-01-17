@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #SBATCH --export=NONE
 #SBATCH -p workq
-#SBATCH --time=23:59:59
+#SBATCH --time=3:0:00
 #SBATCH --ntasks=36
 #SBATCH --mem=248GB
 #SBATCH --tmp=880GB
