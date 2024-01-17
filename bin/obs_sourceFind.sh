@@ -10,12 +10,16 @@ exit 1;
 obsnum=
 account="mwasci"
 machine="garrawarla"
+dep=
 
-while getopts "o:" OPTION
+while getopts "o:d:" OPTION
 do
     case "$OPTION" in
         o)
             obsnum=${OPTARG}
+            ;;
+        d)
+            dep=${OPTARG}
             ;;
         ? | : | h)
             usage
@@ -27,6 +31,11 @@ done
 if [[ -z ${obsnum} ]]
 then
     usage
+fi
+
+if [[ ! -z ${dep} ]]
+then
+    depend="--dependency=afterok:${dep}"
 fi
 
 ## load configurations
