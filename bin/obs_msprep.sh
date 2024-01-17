@@ -1,9 +1,10 @@
 #!/bin/bash
 usage()
 {
-echo "msprep.sh [-o obsnum] [-c calibration sol]
-    -o  obsnum  : the observation id
-    -c  cal sol : the calibration solution" 1>&2;
+echo "msprep.sh [-o obsnum] [-c calibration sol] [-d dependancy]
+    -o  obsnum   : the observation id
+    -c  cal sol  : the calibration solution
+    -d dependancy: dependant job id" 1>&2;
 exit 1;
 }
 
@@ -11,8 +12,9 @@ obsnum=
 calibration=
 account="mwasci"
 machine="garrawarla"
+dep=
 
-while getopts "o:c:" OPTION
+while getopts "o:c:d:" OPTION
 do
     case "$OPTION" in
         o)
@@ -20,6 +22,9 @@ do
             ;;
         c)
             calibration=${OPTARG}
+            ;;
+        d)
+            dep=${OPTARG}
             ;;
         ? | : | h)
             usage
@@ -36,6 +41,11 @@ fi
 if [[ -z ${calibration} ]]
 then
     usage
+fi
+
+if [[ ! -z ${dep} ]]
+then
+    depend="--dependency=afterok:${dep}"
 fi
 
 ## load configurations
