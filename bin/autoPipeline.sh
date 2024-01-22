@@ -2,7 +2,8 @@
 
 usage()
 {
-echo "autoPipeline.sh [-d download link] [-o obsnum] [-c calsol]"
+echo "autoPipeline.sh [-d download link] [-o obsnum] [-c calsol]" 1>&2;
+exit 1;
 }
 
 obsnum=
@@ -28,6 +29,12 @@ do
             ;;
     esac
 done
+
+# if obsid is empty then just pring help
+if [[ -z ${obsnum} ]]
+then
+    usage
+fi
 
 ## load configurations
 source bin/config.txt
