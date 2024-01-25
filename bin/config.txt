@@ -1,4 +1,3 @@
-MYBASE="/astro/mwasci/sprabu/satellites/MWA-METEOR"
+MYBASE="/scratch/mwasci/sprabu/MWA-METEOR"
 MYCLUSTER="garrawarla"
 MYACCOUNT="mwasci"
-MYPATH="/astro/mwasci/sprabu/path/PawseyPathFiles"
