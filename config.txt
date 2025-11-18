@@ -1,0 +1,3 @@
+MYBASE="/scratch/mwasci/sprabu/MWA-METEOR"
+MYCLUSTER="setonix"
+MYACCOUNT="mwasci"

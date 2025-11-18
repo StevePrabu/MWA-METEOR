@@ -1,0 +1,7 @@
+alias wsclean='singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean'
+alias aoflagger='singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/aoflagger_3.0_portable.sif aoflagger'
+alias calibrate='singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/hyperdrive_main.sif hyperdrive di-calibrate'
+alias applysolution='singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/hyperdrive_main.sif hyperdrive solutions-apply'
+alias plotsolution='singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/hyperdrive_main.sif hyperdrive solutions-plot'
+alias aocal='singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/ao_cal_first.sif calibrate'
+alias ao_applysol='singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/ao_cal_first.sif applysolutions'
