@@ -1,0 +1,36 @@
++ obsnum=1386389536
++ base=/scratch/mwasci/sprabu/MWA-METEOR
++ calObID=1386439216
+++ giant-squid list -n 1386389536
+++ awk '/^[|] [0-9]+/ {print $2}'
++ scratchID=952602
++ cd /scratch/mwasci/sprabu/MWA-METEOR/processing
++ '[' -d 1386389536 ']'
++ echo '1386389536 folder does exist.'
++ cd 1386389536
++ '[' -d 1386389536.ms ']'
++ echo 'measurement set already exists.'
++ rm -r calibrated.ms
+rm: cannot remove 'calibrated.ms': No such file or directory
++ TIMESTEPS=30
++ updatedTIMESTEPS=29
++ channels=768
++ updatedCHANNELS=767
++ cp ../1386439216/1386439216.bin .
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/ao_cal_first.sif applysolutions 1386389536.ms 1386439216.bin
++ cp ../../meteorFinder.py .
++ (( g=0 ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 0
+++ date +%s
++ startt=1763718128
++ i=0
++ j=1
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 0 1 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386389536.ms
+++ date +%s
++ endt=1763718353
++ runtimet=225
++ echo 'the imaging run time 225'
+++ date +%s
++ startt=1763718353
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386389536 --timeStep 0 --freqChannels 768 --imgSize 1400

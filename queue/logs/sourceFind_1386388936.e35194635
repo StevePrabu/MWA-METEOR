@@ -1,0 +1,1323 @@
++ obsnum=1386388936
++ base=/scratch/mwasci/sprabu/MWA-METEOR
++ calObID=1386439216
+++ giant-squid list -n 1386388936
+++ awk '/^[|] [0-9]+/ {print $2}'
++ scratchID='952593
+952594'
++ cd /scratch/mwasci/sprabu/MWA-METEOR/processing
++ '[' -d 1386388936 ']'
++ echo '1386388936 folder does exist.'
++ cd 1386388936
++ '[' -d 1386388936.ms ']'
++ cp -r /scratch/mwasci/asvo/952593 '952594/*' /scratch/mwasci/sprabu/MWA-METEOR/processing/1386388936
+cp: cannot stat '952594/*': No such file or directory
++ rm -r calibrated.ms
+rm: cannot remove 'calibrated.ms': No such file or directory
++ TIMESTEPS=30
++ updatedTIMESTEPS=29
++ channels=768
++ updatedCHANNELS=767
++ cp ../1386439216/1386439216.bin .
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/ao_cal_first.sif applysolutions 1386388936.ms 1386439216.bin
+terminate called after throwing an instance of 'casa::TableNoFile'
+  what():  Table /scratch/mwasci/sprabu/MWA-METEOR/processing/1386388936/1386388936.ms does not exist
+qemu: uncaught target signal 6 (Aborted) - core dumped
+/var/spool/slurmd/job35194635/slurm_script: line 91: 2874240 Aborted                 (core dumped) singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/ao_cal_first.sif applysolutions ${obsnum}.ms ${calObID}.bin
++ cp ../../meteorFinder.py .
++ (( g=0 ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 0
+++ date +%s
++ startt=1763716996
++ i=0
++ j=1
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 0 1 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763716999
++ runtimet=3
++ echo 'the imaging run time 3'
+++ date +%s
++ startt=1763716999
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 0 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717003
++ runtimet=4
++ echo 'sourceFinding run time 4'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 1
+++ date +%s
++ startt=1763717003
++ i=1
++ j=2
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 1 2 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717004
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717004
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 1 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717005
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 2
+++ date +%s
++ startt=1763717005
++ i=2
++ j=3
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 2 3 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717006
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717006
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 2 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717007
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 3
+++ date +%s
++ startt=1763717007
++ i=3
++ j=4
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 3 4 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717008
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717008
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 3 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717009
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 4
+++ date +%s
++ startt=1763717009
++ i=4
++ j=5
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 4 5 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717010
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717010
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 4 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717011
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 5
+++ date +%s
++ startt=1763717011
++ i=5
++ j=6
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 5 6 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717012
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717012
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 5 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717013
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 6
+++ date +%s
++ startt=1763717013
++ i=6
++ j=7
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 6 7 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717014
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717014
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 6 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717015
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 7
+++ date +%s
++ startt=1763717015
++ i=7
++ j=8
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 7 8 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717016
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717016
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 7 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717017
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 8
+++ date +%s
++ startt=1763717017
++ i=8
++ j=9
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 8 9 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717018
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717018
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 8 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717019
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 9
+++ date +%s
++ startt=1763717019
++ i=9
++ j=10
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 9 10 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717020
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717020
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 9 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717021
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 10
+++ date +%s
++ startt=1763717021
++ i=10
++ j=11
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 10 11 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717022
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717022
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 10 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717023
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 11
+++ date +%s
++ startt=1763717023
++ i=11
++ j=12
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 11 12 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717023
++ runtimet=0
++ echo 'the imaging run time 0'
+++ date +%s
++ startt=1763717023
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 11 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717025
++ runtimet=2
++ echo 'sourceFinding run time 2'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 12
+++ date +%s
++ startt=1763717025
++ i=12
++ j=13
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 12 13 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717025
++ runtimet=0
++ echo 'the imaging run time 0'
+++ date +%s
++ startt=1763717025
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 12 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717027
++ runtimet=2
++ echo 'sourceFinding run time 2'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 13
+++ date +%s
++ startt=1763717027
++ i=13
++ j=14
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 13 14 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717027
++ runtimet=0
++ echo 'the imaging run time 0'
+++ date +%s
++ startt=1763717027
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 13 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717029
++ runtimet=2
++ echo 'sourceFinding run time 2'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 14
+++ date +%s
++ startt=1763717029
++ i=14
++ j=15
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 14 15 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717029
++ runtimet=0
++ echo 'the imaging run time 0'
+++ date +%s
++ startt=1763717029
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 14 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717031
++ runtimet=2
++ echo 'sourceFinding run time 2'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 15
+++ date +%s
++ startt=1763717031
++ i=15
++ j=16
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 15 16 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717031
++ runtimet=0
++ echo 'the imaging run time 0'
+++ date +%s
++ startt=1763717031
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 15 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717033
++ runtimet=2
++ echo 'sourceFinding run time 2'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 16
+++ date +%s
++ startt=1763717033
++ i=16
++ j=17
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 16 17 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717033
++ runtimet=0
++ echo 'the imaging run time 0'
+++ date +%s
++ startt=1763717033
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 16 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717034
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 17
+++ date +%s
++ startt=1763717034
++ i=17
++ j=18
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 17 18 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717035
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717035
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 17 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717036
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 18
+++ date +%s
++ startt=1763717036
++ i=18
++ j=19
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 18 19 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717037
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717037
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 18 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717038
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 19
+++ date +%s
++ startt=1763717038
++ i=19
++ j=20
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 19 20 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717039
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717039
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 19 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717040
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 20
+++ date +%s
++ startt=1763717040
++ i=20
++ j=21
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 20 21 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717041
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717041
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 20 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717042
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 21
+++ date +%s
++ startt=1763717042
++ i=21
++ j=22
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 21 22 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717043
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717043
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 21 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717044
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 22
+++ date +%s
++ startt=1763717044
++ i=22
++ j=23
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 22 23 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717045
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717045
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 22 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717046
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 23
+++ date +%s
++ startt=1763717046
++ i=23
++ j=24
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 23 24 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717047
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717047
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 23 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717048
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 24
+++ date +%s
++ startt=1763717048
++ i=24
++ j=25
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 24 25 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717049
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717049
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 24 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717050
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 25
+++ date +%s
++ startt=1763717050
++ i=25
++ j=26
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 25 26 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717051
++ runtimet=1
++ echo 'the imaging run time 1'
+++ date +%s
++ startt=1763717051
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 25 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717052
++ runtimet=1
++ echo 'sourceFinding run time 1'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 26
+++ date +%s
++ startt=1763717052
++ i=26
++ j=27
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 26 27 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717052
++ runtimet=0
++ echo 'the imaging run time 0'
+++ date +%s
++ startt=1763717052
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 26 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717054
++ runtimet=2
++ echo 'sourceFinding run time 2'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 27
+++ date +%s
++ startt=1763717054
++ i=27
++ j=28
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 27 28 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717054
++ runtimet=0
++ echo 'the imaging run time 0'
+++ date +%s
++ startt=1763717054
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 27 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717056
++ runtimet=2
++ echo 'sourceFinding run time 2'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 28
+++ date +%s
++ startt=1763717056
++ i=28
++ j=29
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 28 29 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717056
++ runtimet=0
++ echo 'the imaging run time 0'
+++ date +%s
++ startt=1763717056
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 28 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717058
++ runtimet=2
++ echo 'sourceFinding run time 2'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
++ echo 'working on timeStep ' 29
+++ date +%s
++ startt=1763717058
++ i=29
++ j=30
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/wsclean_forcemask.sif wsclean -quiet -name img -size 1400 1400 -abs-mem 120 -interval 29 30 -channels-out 768 -weight briggs 0 -scale 5amin -use-wgridder -maxuvw-m 500 -no-dirty 1386388936.ms
+++ date +%s
++ endt=1763717058
++ runtimet=0
++ echo 'the imaging run time 0'
+++ date +%s
++ startt=1763717058
++ singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3 ./meteorFinder.py --obs 1386388936 --timeStep 29 --freqChannels 768 --imgSize 1400
+Traceback (most recent call last):
+  File "./meteorFinder.py", line 319, in <module>
+    main(args)
+  File "./meteorFinder.py", line 197, in main
+    diff_cube = makeDiffTemplates()
+  File "./meteorFinder.py", line 77, in makeDiffTemplates
+    hdu = fits.open('img-{}-image.fits'.format(str(f).zfill(4)))
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 165, in fitsopen
+    lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 405, in fromfile
+    lazy_load_hdus=lazy_load_hdus, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/hdu/hdulist.py", line 1054, in _readfrom
+    fileobj = _File(fileobj, mode=mode, memmap=memmap, cache=cache)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/utils/decorators.py", line 535, in wrapper
+    return function(*args, **kwargs)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 193, in __init__
+    self._open_filename(fileobj, mode, overwrite)
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/file.py", line 574, in _open_filename
+    self._file = fileobj_open(self.name, IO_FITS_MODES[mode])
+  File "/usr/local/lib/python3.6/dist-packages/astropy/io/fits/util.py", line 396, in fileobj_open
+    return open(filename, mode, buffering=0)
+FileNotFoundError: [Errno 2] No such file or directory: 'img-0002-image.fits'
+++ date +%s
++ endt=1763717060
++ runtimet=2
++ echo 'sourceFinding run time 2'
++ rm 'img*.fits'
+rm: cannot remove 'img*.fits': No such file or directory
++ (( g++ ))
++ (( g<=29 ))
+++ date +%s
++ end=1763717060
++ runtime=1763717060
++ echo 'the job run time 1763717060'

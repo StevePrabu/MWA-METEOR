@@ -5,3 +5,4 @@ alias applysolution='singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containe
 alias plotsolution='singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/hyperdrive_main.sif hyperdrive solutions-plot'
 alias aocal='singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/ao_cal_first.sif calibrate'
 alias ao_applysol='singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/ao_cal_first.sif applysolutions'
+alias myPython='singularity exec /scratch/mwasci/sprabu/MWA-METEOR/containers/mypython_cygx1V2.sif python3'

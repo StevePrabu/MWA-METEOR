@@ -1,0 +1,11 @@
+1386389176 folder does exist.
+measurement set already exists.
+Opening measurement set...DONE
+Counting timesteps... DONE (30 timesteps)
+Checking solutions file... DONE
+Applying each solution to 4 channels.
+Applying solutions...
+- Interval 1/1 (0-317550)
+  Antenna1: (1.02382,0.0112361)
+working on timeStep  0
+the imaging run time 227
